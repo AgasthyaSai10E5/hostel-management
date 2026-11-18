@@ -146,3 +146,20 @@ Remove everything: `kubectl delete -f k8s/`.
 | `MongoDB connection failed` | Start MongoDB, or check `MONGODB_URI` in `.env` |
 | Pod shows `ImagePullBackOff` | Build the image locally first (and `minikube image load` for minikube) |
 | Port 5000 busy | Change `PORT` in `.env` |
+
+
+## 13. Project Links and Proof of Execution
+- **GitHub repository:** https://github.com/AgasthyaSai10E5/hostel-management
+
+### Application
+![Admin dashboard](screenshots/dashboard.png)
+![Hostels and rooms](screenshots/hostels-rooms.png)
+
+### Docker
+![Docker Compose containers](screenshots/docker-compose-ps.png)
+![Docker Desktop containers](screenshots/docker-desktop-containers.png)
+![App running in Docker](screenshots/docker-running-app.png)
+
+### Kubernetes
+![Pods, services and deployments](screenshots/k8s-pods-services.png)
+![App running in Kubernetes](screenshots/k8s-running-app.png)
