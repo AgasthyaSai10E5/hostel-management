@@ -1,0 +1,28 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: hostel-mongodb
+    restart: unless-stopped
+    volumes:
+      - hostel_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  app:
+    build: .
+    image: hostel-management:latest
+    container_name: hostel-management-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo:27017/hostel_management
+      JWT_SECRET: change_this_to_a_long_random_secret
+    depends_on:
+      mongo:
+        condition: service_healthy
+volumes:
+  hostel_data:
